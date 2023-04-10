@@ -39,10 +39,6 @@ export class Day {
     * The uv factor for the day
     */
     'uv'?: number;
-    /**
-    * The PM2.5 value for the day that the API request was made
-    */
-    'airQuality'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -80,11 +76,6 @@ export class Day {
         {
             "name": "uv",
             "baseName": "uv",
-            "type": "number"
-        },
-        {
-            "name": "airQuality",
-            "baseName": "airQuality",
             "type": "number"
         }    ];
 

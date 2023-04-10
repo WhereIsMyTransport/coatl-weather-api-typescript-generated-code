@@ -7,7 +7,7 @@ export * from './hourly';
 export * from './now';
 export * from './serverErrorResponse';
 export * from './temperature';
-export * from './twoDayForecast';
+export * from './weatherForecast';
 
 import * as fs from 'fs';
 
@@ -29,7 +29,7 @@ import { Hourly } from './hourly';
 import { Now } from './now';
 import { ServerErrorResponse } from './serverErrorResponse';
 import { Temperature } from './temperature';
-import { TwoDayForecast } from './twoDayForecast';
+import { WeatherForecast } from './weatherForecast';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -54,7 +54,7 @@ let typeMap: {[index: string]: any} = {
     "Now": Now,
     "ServerErrorResponse": ServerErrorResponse,
     "Temperature": Temperature,
-    "TwoDayForecast": TwoDayForecast,
+    "WeatherForecast": WeatherForecast,
 }
 
 export class ObjectSerializer {
