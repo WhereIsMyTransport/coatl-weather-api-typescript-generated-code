@@ -17,7 +17,7 @@ import http from 'http';
 /* tslint:disable:no-unused-locals */
 import { ClientErrorResponse } from '../model/clientErrorResponse';
 import { ServerErrorResponse } from '../model/serverErrorResponse';
-import { TwoDayForecast } from '../model/twoDayForecast';
+import { WeatherForecast } from '../model/weatherForecast';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -98,7 +98,7 @@ export class DefaultApi {
      * \"Get weather details based on provided H3 index\" 
      * @param h3Index \&quot;The h3 index for which weather is requested. The responsibility falls on the client side to come up with  \&#39;good\&#39; h3 indeces to make caching work and also know when to update the weather widget should the device\&#39;s  location change enough.\&quot; 
      */
-    public async getWeatherByH3Index (h3Index: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: TwoDayForecast;  }> {
+    public async getWeatherByH3Index (h3Index: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: WeatherForecast;  }> {
         const localVarPath = this.basePath + '/weather/v1/forecast/{h3Index}'
             .replace('{' + 'h3Index' + '}', encodeURIComponent(String(h3Index)));
         let localVarQueryParameters: any = {};
@@ -149,13 +149,13 @@ export class DefaultApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: TwoDayForecast;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: WeatherForecast;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "TwoDayForecast");
+                            body = ObjectSerializer.deserialize(body, "WeatherForecast");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));

@@ -2,7 +2,7 @@
   "name": "coatl-weather-api-typescript-generated-code",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "api.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

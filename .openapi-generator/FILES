@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 api.ts
 api/apis.ts
 api/defaultApi.ts
@@ -12,4 +11,4 @@ model/models.ts
 model/now.ts
 model/serverErrorResponse.ts
 model/temperature.ts
-model/twoDayForecast.ts
+model/weatherForecast.ts
