@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Weather
- * \"Internal API endpoint for Rumbo to get weather info.\" 
+ * Internal API endpoint for Rumbo to get weather info. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -34,7 +34,7 @@ export interface ClientErrorResponse {
      * @type {string}
      * @memberof ClientErrorResponse
      */
-    'message'?: string;
+    'message'?: string | null;
 }
 /**
  * 
@@ -47,25 +47,31 @@ export interface Day {
      * @type {string}
      * @memberof Day
      */
-    'date'?: string;
+    'date': string;
+    /**
+     * A short code which describe the weather condition.
+     * @type {string}
+     * @memberof Day
+     */
+    'conditionCode': string;
     /**
      * The URL for the weather icon to display.
      * @type {string}
      * @memberof Day
      */
-    'iconUrl'?: string;
+    'iconUrl': string;
     /**
      * The Hex code for the weather background colour gradient to display.
      * @type {string}
      * @memberof Day
      */
-    'gradientColor'?: string;
+    'gradientColor': string;
     /**
      * 
      * @type {DayTemperature}
      * @memberof Day
      */
-    'temperature'?: DayTemperature;
+    'temperature': DayTemperature;
     /**
      * The percentage chance that it will rain that day
      * @type {number}
@@ -96,7 +102,7 @@ export interface DayTemperature {
      * @type {Temperature}
      * @memberof DayTemperature
      */
-    'minimum'?: Temperature;
+    'minimum': Temperature;
 }
 /**
  * 
@@ -109,19 +115,25 @@ export interface Hourly {
      * @type {string}
      * @memberof Hourly
      */
-    'datetime'?: string;
+    'datetime': string;
     /**
      * 
      * @type {Temperature}
      * @memberof Hourly
      */
-    'temperature'?: Temperature;
+    'temperature': Temperature;
+    /**
+     * A short code which describe the weather condition.
+     * @type {string}
+     * @memberof Hourly
+     */
+    'conditionCode': string;
     /**
      * The URL for the weather icon to display.
      * @type {string}
      * @memberof Hourly
      */
-    'iconUrl'?: string;
+    'iconUrl': string;
     /**
      * The percentage chance that it will rain that day
      * @type {number}
@@ -136,23 +148,29 @@ export interface Hourly {
  */
 export interface Now {
     /**
+     * A short code which describe the weather condition.
+     * @type {string}
+     * @memberof Now
+     */
+    'conditionCode': string;
+    /**
      * The URL for the weather icon to display.
      * @type {string}
      * @memberof Now
      */
-    'iconUrl'?: string;
+    'iconUrl': string;
     /**
      * The Hex code for the weather background colour gradient to display.
      * @type {string}
      * @memberof Now
      */
-    'gradientColor'?: string;
+    'gradientColor': string;
     /**
      * 
      * @type {Temperature}
      * @memberof Now
      */
-    'temperature'?: Temperature;
+    'temperature': Temperature;
 }
 /**
  * 
@@ -165,7 +183,7 @@ export interface ServerErrorResponse {
      * @type {string}
      * @memberof ServerErrorResponse
      */
-    'message'?: string;
+    'message'?: string | null;
 }
 /**
  * The degrees and unit of temperature
@@ -184,7 +202,7 @@ export interface Temperature {
      * @type {string}
      * @memberof Temperature
      */
-    'unit'?: string;
+    'unit': string;
 }
 /**
  * 
@@ -197,7 +215,7 @@ export interface WeatherForecast {
      * @type {Now}
      * @memberof WeatherForecast
      */
-    'now'?: Now | null;
+    'now': Now;
     /**
      * A list of days with daily weather values for each.
      * @type {Array<Day>}
@@ -233,8 +251,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         getWeatherByH3Index: async (h3Index: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'h3Index' is not null or undefined
             assertParamExists('getWeatherByH3Index', 'h3Index', h3Index)
-            const localVarPath = `/weather/v1/forecast/{h3Index}`
-                .replace(`{${"h3Index"}}`, encodeURIComponent(String(h3Index)));
+            const localVarPath = `/weather/v1/forecast`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -249,6 +266,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // authentication firebase required
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "firebase", [], configuration)
+
+            if (h3Index !== undefined) {
+                localVarQueryParameter['h3Index'] = h3Index;
+            }
 
 
     

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Weather
- * \"Internal API endpoint for Rumbo to get weather info.\" 
+ * Internal API endpoint for Rumbo to get weather info. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
