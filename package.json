@@ -1,19 +1,31 @@
 {
-  "name": "coatl-weather-api-typescript-generated-code",
+  "name": "coatl-weather-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "OpenAPI client for coatl-weather-api",
+  "author": "OpenAPI-Generator Contributors",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WhereIsMyTransport/coatl-weather-api-typescript-generated-code.git"
+    "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/WhereIsMyTransport/coatl-weather-api-typescript-generated-code/issues"
+  "keywords": [
+    "axios",
+    "typescript",
+    "openapi-client",
+    "openapi-generator",
+    "coatl-weather-api"
+  ],
+  "license": "Unlicense",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc ",
+    "prepare": "npm run build"
   },
-  "homepage": "https://github.com/WhereIsMyTransport/coatl-weather-api-typescript-generated-code#readme"
+  "dependencies": {
+    "axios": "^0.27.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.5",
+    "typescript": "^4.0"
+  }
 }
